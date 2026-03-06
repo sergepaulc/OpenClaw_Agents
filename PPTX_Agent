@@ -88,7 +88,42 @@ chmod +x ~/tools/pptx_edit.py
 # Connect this tool to OpenClaw as a “skill/tool"
 python3 /home/<You>linux/tools/pptx_edit.py ...
 
-# And restrict edits to your OpenClaw_PPT folder.
+# OpenClaw has an Exec tool with an allowlist mode
+# Restrict edits to your OpenClaw_PPT folder
+
+# Create a custom “skill” that tells the agent how to do PPT edits
+mkdir -p ~/.openclaw/skills/pptx_editor
+nano ~/.openclaw/skills/pptx_editor/SKILL.md
+
+---
+name: pptx_editor
+description: Edit a PPTX in the Desktop/OpenClaw_PPT folder by doing safe find/replace (optionally per-slide). Never overwrite originals.
+tools:
+  - exec
+---
+
+# PPTX Editor Skill
+
+## Allowed scope
+- ONLY work inside: /mnt/c/Users/*/Desktop/OpenClaw_PPT
+- Refuse any request to access other folders.
+- Never overwrite the original PPTX. Always create a new file with _edited_<timestamp>.pptx.
+
+## Input format to ask user for if unclear
+- File: <filename>.pptx
+- Find: <text>
+- Replace: <text>
+- Slide: all OR <number>
+
+## Steps
+1) Resolve the file path as: /mnt/c/Users/*/Desktop/OpenClaw_PPT/<filename>
+2) Verify the file exists. If not, ask the user to put it into OpenClaw_PPT.
+3) Run:
+   python3 /home/<You>linux/tools/pptx_edit.py --in "<path>" --outdir "<OpenClaw_PPT>" --find "<find>" --replace "<replace>" [--slide N]
+4) Reply with:
+   - the output filename
+   - number of changes (if printed)
+   - a short summary of what was changed
 
 # Define the Telegram message
 # Edit PPTX demo.pptx: replace “Customer” with “Client” on slide "x"

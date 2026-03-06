@@ -89,5 +89,5 @@ chmod +x ~/tools/pptx_edit.py
 python3 /home/<You>linux/tools/pptx_edit.py ...
 
 # Define the Telegram message
-# Edit PPTX demo.pptx: replace “Customer” with “Client” on slide 3
+# Edit PPTX demo.pptx: replace “Customer” with “Client” on slide "x"
 

@@ -88,6 +88,8 @@ chmod +x ~/tools/pptx_edit.py
 # Connect this tool to OpenClaw as a “skill/tool"
 python3 /home/<You>linux/tools/pptx_edit.py ...
 
+# And restrict edits to your OpenClaw_PPT folder.
+
 # Define the Telegram message
 # Edit PPTX demo.pptx: replace “Customer” with “Client” on slide "x"
 

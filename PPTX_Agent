@@ -84,3 +84,10 @@ chmod +x ~/tools/pptx_edit.py
   --in "/mnt/c/Users/<YOU>/Desktop/OpenClaw_PPT/demo.pptx" \
   --outdir "/mnt/c/Users/<YOU>/Desktop/OpenClaw_PPT" \
   --find "Q1" --replace "Q2"
+
+# Connect this tool to OpenClaw as a “skill/tool"
+python3 /home/<You>linux/tools/pptx_edit.py ...
+
+# Define the Telegram message
+# Edit PPTX demo.pptx: replace “Customer” with “Client” on slide 3
+

@@ -21,7 +21,7 @@ OpenClaw receives it and runs a safe, allowlisted command that:
 - Telegram Bot: chat interface
 - OpenClaw Gateway (WSL Ubuntu): receives messages, routes tasks
 - Tool: a safe wrapper script calls a Python PPTX editor
-- PPTX Editor: `python-pptx` modifies slides and saves a new deck
+- PPTX Editor: `python-pptx`
 
 ## Requirements
 

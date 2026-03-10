@@ -4,91 +4,55 @@
 
 ## Editing Powerpoint presentations
 
-````markdown
-# OpenClaw PPTX Editor (Windows + WSL2 + Telegram)
 
-Edit PowerPoint `.pptx` files **from a Telegram chat** using **OpenClaw** on a Windows PC (via WSL2 + Ubuntu).  
-This project edits the **PPTX file directly** (Open XML) — **no PowerPoint UI automation**.
+```markdown
+# OpenClaw PPTX Editor (WSL + Telegram)
 
-## What you can do
+Edit `.pptx` files **automatically from Telegram** using **OpenClaw** on Windows (via WSL2 + Ubuntu).  
+No PowerPoint UI automation: we edit the PPTX file directly using `python-pptx`.
 
-Send a Telegram message like:
+## What this does
 
-```text
-Edit PPTX Art_Class.pptx: replace "Class" with "Course" on all slides
-````
+You send a message to your Telegram bot like:
 
-or:
-
-```text
-Edit PPTX Art_Class.pptx: replace "Class" with "Course" on slide 3
 ```
 
-OpenClaw will:
+pptx Art_Class.pptx | find=Class | replace=Course
 
-* find the file in a dedicated folder on your Desktop
-* apply the text change (all slides or one slide)
-* save a new file: `*_edited_<timestamp>.pptx` (never overwrites the original)
-* reply in Telegram with the output filename and `changes=N`
+````
 
----
+OpenClaw receives it and runs a **safe, allowlisted** command that:
+- only operates inside a single folder (`Desktop/OpenClaw_PPT`)
+- never overwrites the original file
+- writes a new file: `*_edited_<timestamp>.pptx`
 
-## Architecture (high level)
+## Architecture
 
-* **Telegram Bot** (UI): you chat with your bot on your phone
-* **OpenClaw Gateway** (WSL Ubuntu): receives Telegram messages and routes to the agent
-* **Safe Exec Wrapper** (`pptx_edit_safe.sh`): enforces folder boundaries + allowed command
-* **Python PPTX Editor** (`pptx_edit.py`): edits PPTX using `python-pptx` and writes a new file
-
----
+- **Telegram Bot**: chat interface
+- **OpenClaw Gateway** (WSL Ubuntu): receives messages, routes tasks
+- **Tool**: a safe wrapper script calls a Python PPTX editor
+- **PPTX Editor**: `python-pptx` modifies slides and saves a new deck
 
 ## Requirements
 
-### Windows
+- Windows 10/11 with **WSL2**
+- Ubuntu 24.04 (WSL)
+- OpenClaw installed and connected to Telegram + an LLM provider (Anthropic/OpenAI)
+- Python 3 + `python-venv`
 
-* Windows 10/11 with **WSL2 enabled**
-* Ubuntu 24.04 installed in WSL
+## Folder layout (Windows)
 
-### OpenClaw
+Create a dedicated folder for input/output PPTX files:
 
-* OpenClaw installed on WSL Ubuntu
-* A configured model provider key (Anthropic/OpenAI/etc.)
-* Telegram bot token configured in OpenClaw
-* Telegram access configured (allowlist/pairing as desired)
-
-### Python (WSL)
-
-* Python 3
-* `python3-venv` (recommended)
-* `python-pptx` installed inside a venv
-
----
-
-## Folder boundary (Windows)
-
-Create a dedicated folder on your Windows Desktop:
-
-* `C:\Users\<YOU>\Desktop\OpenClaw_PPT\`
+- `C:\Users\<YOU>\Desktop\OpenClaw_PPT\`
 
 WSL path:
 
-* `/mnt/c/Users/<YOU>/Desktop/OpenClaw_PPT`
-
-Only PPTX files in this folder are eligible for editing.
-
----
+- `/mnt/c/Users/<YOU>/Desktop/OpenClaw_PPT`
 
 ## Setup
 
-### 1) Create the Desktop folder (Windows)
-
-Create:
-
-* `Desktop\OpenClaw_PPT`
-
-Put your input decks here (e.g., `Art_Class.pptx`).
-
-### 2) Create a Python virtual environment (WSL Ubuntu)
+### 1) Create a Python virtual environment (WSL)
 
 ```bash
 sudo apt update
@@ -99,164 +63,115 @@ source ~/.venvs/openclaw-ppt/bin/activate
 pip install --upgrade pip
 pip install python-pptx
 python -c "import pptx; print('pptx ok')"
-```
+````
 
-### 3) Add the PPTX edit script (WSL)
+### 2) Add the PPTX edit script
 
-Create:
+Save as:
 
 * `~/tools/pptx_edit.py`
 
+(Example script supports `find/replace` across all slides or a specific slide.)
+
+Run:
+
 ```bash
-mkdir -p ~/tools
-nano ~/tools/pptx_edit.py
 chmod +x ~/tools/pptx_edit.py
 python ~/tools/pptx_edit.py --help
 ```
 
-Example script responsibilities:
+### 3) Add a safe wrapper script (recommended)
 
-* open `.pptx`
-* find/replace in text runs
-* optionally limit to a slide number
-* write `*_edited_<timestamp>.pptx`
-
-> Ensure your script prints: output path and `changes=N`.
-
-### 4) Add the safe wrapper script (WSL)
-
-Create:
+Save as:
 
 * `~/tools/pptx_edit_safe.sh`
 
-This wrapper must:
+This wrapper enforces:
 
-* accept only a **filename** (no paths)
-* force input to `/mnt/c/Users/<YOU>/Desktop/OpenClaw_PPT/<filename>`
-* ensure `.pptx` extension
-* call the venv python + `pptx_edit.py`
-* write output to the same folder
+* **only** files in `/mnt/c/Users/<YOU>/Desktop/OpenClaw_PPT`
+* **only** `.pptx`
+* rejects path traversal
+* always outputs into the same folder
+
+Make executable:
 
 ```bash
-nano ~/tools/pptx_edit_safe.sh
 chmod +x ~/tools/pptx_edit_safe.sh
 ```
 
-Manual test:
+Test manually:
 
 ```bash
-PPT_DIR="$(ls -d /mnt/c/Users/*/Desktop/OpenClaw_PPT | head -n 1)"
+PPT_DIR="/mnt/c/Users/<YOU>/Desktop/OpenClaw_PPT"
+~/.venvs/openclaw-ppt/bin/python ~/tools/pptx_edit.py --in "$PPT_DIR/Art_Class.pptx" --outdir "$PPT_DIR" --find "Class" --replace "Course"
 ~/tools/pptx_edit_safe.sh Art_Class.pptx Class Course
 ```
 
-You should see a new file like:
+### 4) Wire into OpenClaw (Exec tool + approvals)
 
-* `Art_Class_edited_YYYYMMDD-HHMMSS.pptx`
+Configure OpenClaw so it can run **only**:
 
-### 5) Configure OpenClaw to run only the wrapper (Exec approvals/allowlist)
+```
+/home/<YOU>/tools/pptx_edit_safe.sh
+```
 
-For security, OpenClaw should be allowed to execute **only**:
-
-* `/home/<LINUX_USER>/tools/pptx_edit_safe.sh`
-
-Recommended approach:
+Recommended:
 
 * keep Exec in **approval/allowlist** mode
 * approve only the wrapper command
 * never grant broad shell access
 
-> OpenClaw versions differ in where approvals live. If your UI doesn’t render “Accounts” sections, you can still operate via Sessions + approvals.
-
-### 6) Add agent instructions (Option 1 command format)
-
-Add a rule to your **main agent instructions** (e.g., in `workspace/AGENTS.md`) to recognize this pattern:
-
-```text
-Edit PPTX <file>.pptx: replace "<old>" with "<new>" on slide <n>
-Edit PPTX <file>.pptx: replace "<old>" with "<new>" on all slides
-```
-
-Behavior:
-
-* extract `file`, `old`, `new`, optional `slide`
-* run:
-
-  ```text
-  /home/<LINUX_USER>/tools/pptx_edit_safe.sh "<file>.pptx" "<old>" "<new>" [slide]
-  ```
-* reply with output path and `changes=N`
-* refuse any request outside the Desktop folder
-
-Reload or restart OpenClaw after editing instructions.
-
----
+> Note: OpenClaw UI/config may differ by version. The safest pattern is “approval required” + allowlist the wrapper script.
 
 ## Usage (Telegram)
 
 Put the PPTX in `Desktop/OpenClaw_PPT`, then send your bot:
 
-All slides:
-
-```text
-Edit PPTX Art_Class.pptx: replace "Class" with "Course" on all slides
+```
+pptx Art_Class.pptx | find=Class | replace=Course
 ```
 
-Single slide (1-based):
+Optional: target a single slide (1-based):
 
-```text
-Edit PPTX Art_Class.pptx: replace "Class" with "Course" on slide 3
+```
+pptx Art_Class.pptx | find=Class | replace=Course | slide=1
 ```
 
-Output:
+The output file will appear in the same folder:
 
 * `Art_Class_edited_YYYYMMDD-HHMMSS.pptx`
 
----
-
-## Security Notes (important)
+## Security Notes
 
 * Keep the gateway bound to `127.0.0.1` (local only).
-* Restrict all edits to a **single dedicated folder** (`OpenClaw_PPT`).
-* Allowlist/approve only the wrapper script (not arbitrary shell).
-* Rotate tokens if they are ever exposed (Telegram bot token, OpenClaw gateway token).
-* Prefer “approval required” for Exec until your workflow is stable.
-
----
+* Store PPTX files in a dedicated folder and restrict tools to that folder.
+  
 
 ## Troubleshooting
 
-### `ModuleNotFoundError: No module named 'pptx'`
+* **ModuleNotFoundError: pptx**
+  Activate venv and install dependencies:
 
-Activate venv and install deps:
+  ```bash
+  source ~/.venvs/openclaw-ppt/bin/activate
+  pip install python-pptx
+  ```
 
-```bash
-source ~/.venvs/openclaw-ppt/bin/activate
-pip install python-pptx
-```
+* **Ubuntu pip: externally-managed-environment**
+  Use a venv (`python3 -m venv ...`) instead of system pip.
 
-### Ubuntu pip error: `externally-managed-environment`
+* **No reply in Telegram**
+  Ensure OpenClaw gateway is running:
 
-Use a venv (`python3 -m venv ...`) instead of installing into system Python.
-
-### Telegram bot replies “access not configured”
-
-Enable Telegram access by adding your user ID to allowlist (or set DM policy to open) and restart the gateway.
-
-### No reply in Telegram
-
-Check OpenClaw is running:
-
-```bash
-openclaw daemon start
-openclaw gateway status
-```
-
----
+  ```bash
+  openclaw daemon start
+  openclaw gateway status
+  ```
 
 ## License
 
-Choose your preferred license (MIT/Apache-2.0/etc.).
+MIT (or your preferred license).
 
-```
-```
+
+
 

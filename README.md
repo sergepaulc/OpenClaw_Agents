@@ -2,7 +2,7 @@
 
 # OpenClaw PPTX Editor 
 
-Edit `.pptx` files **automatically from Telegram** using **OpenClaw** on Windows (via WSL2 + Ubuntu).  
+Edit `.pptx` files automatically from Telegram using OpenClaw on Windows (via WSL2 + Ubuntu).  
 
 No PowerPoint UI automation: we edit the PPTX file directly using `python-pptx`.
 

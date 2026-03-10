@@ -1,6 +1,6 @@
 # OpenClaw Agents
 
-# OpenClaw PPTX Editor 
+## OpenClaw PPTX Editor 
 
 Edit `.pptx` files automatically from Telegram using OpenClaw on Windows.  
 
@@ -25,7 +25,11 @@ OpenClaw receives it and runs a safe, allowlisted command that:
 
 ## Requirements
 
-- Windows 10/11 with **WSL2**
+- Windows 10/11 with WSL
 - Ubuntu 24.04 (WSL)
 - OpenClaw installed and connected to Telegram + an LLM provider (Anthropic/OpenAI)
 - Python 3 + `python-venv`
+
+## Licensing
+
+This project is licensed under the terms of the MIT license.

@@ -6,22 +6,22 @@ Edit `.pptx` files automatically from Telegram using OpenClaw on Windows (via WS
 
 No PowerPoint UI automation: we edit the PPTX file directly using `python-pptx`.
 
-## What this does
+## How does it work?
 
 You send a message to your Telegram bot like:
 pptx Art_Class.pptx | find=Class | replace=Course
 
-OpenClaw receives it and runs a **safe, allowlisted** command that:
+OpenClaw receives it and runs a safe, allowlisted command that:
 - only operates inside a single folder (`Desktop/OpenClaw_PPT`)
 - never overwrites the original file
 - writes a new file: `*_edited_<timestamp>.pptx`
 
 ## Architecture
 
-- **Telegram Bot**: chat interface
-- **OpenClaw Gateway** (WSL Ubuntu): receives messages, routes tasks
-- **Tool**: a safe wrapper script calls a Python PPTX editor
-- **PPTX Editor**: `python-pptx` modifies slides and saves a new deck
+- Telegram Bot: chat interface
+- OpenClaw Gateway (WSL Ubuntu): receives messages, routes tasks
+- Tool: a safe wrapper script calls a Python PPTX editor
+- PPTX Editor: `python-pptx` modifies slides and saves a new deck
 
 ## Requirements
 

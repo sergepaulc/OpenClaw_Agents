@@ -1,9 +1,6 @@
 # OpenClaw Agents
 
-
-
-## Editing Powerpoint presentations
-# OpenClaw PPTX Editor (WSL + Telegram)
+# OpenClaw PPTX Editor 
 
 Edit `.pptx` files **automatically from Telegram** using **OpenClaw** on Windows (via WSL2 + Ubuntu).  
 

@@ -79,7 +79,7 @@ if __name__ == "__main__":
 # Make it executable:
 chmod +x ~/tools/pptx_edit.py
 
-# Test it
+# Test it manually:
 ~/tools/pptx_edit.py \
   --in "/mnt/c/Users/<YOU>/Desktop/OpenClaw_PPT/demo.pptx" \
   --outdir "/mnt/c/Users/<YOU>/Desktop/OpenClaw_PPT" \

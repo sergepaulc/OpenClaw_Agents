@@ -1,6 +1,6 @@
-# 1) Create a controlled PPTX folder
+## 1) Create a controlled PPTX folder
 
-## Create on Windows Desktop:
+### Create on Windows Desktop:
 
 C:\Users\<YOU>\Desktop\OpenClaw_PPT\
 
@@ -8,7 +8,7 @@ C:\Users\<YOU>\Desktop\OpenClaw_PPT\
 
 /mnt/c/Users/<YOU>/Desktop/OpenClaw_PPT/
 
-# Put your input PPTX file here
+## Put your input PPTX file here
 
 # 2) Create a Python venv and install dependencies for Ubuntu 24.04
 

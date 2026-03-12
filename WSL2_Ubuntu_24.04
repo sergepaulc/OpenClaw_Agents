@@ -1,0 +1,5 @@
+# 1) Install WSL2 and Ubuntu 24.04 on Windows 11
+
+## In PowerShell (Admin):
+
+wsl --install -d Ubuntu-24.04

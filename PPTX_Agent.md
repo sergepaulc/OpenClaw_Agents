@@ -38,10 +38,10 @@ chmod +x ~/tools/pptx_edit.py
 - print output path and changes=N  
 
 ### 4) Wrapper to enforces security boundary
-#### ~/tools/pptx_edit_safe.sh (recommended)
-#### only works inside OpenClaw_PPT
-#### accepts only a filename (no paths)
-#### requires .pptx
+- ~/tools/pptx_edit_safe.sh (recommended)
+- only works inside OpenClaw_PPT
+- accepts only a filename (no paths)
+- requires .pptx
 
 nano ~/tools/pptx_edit_safe.sh  
 chmod +x ~/tools/pptx_edit_safe.sh  

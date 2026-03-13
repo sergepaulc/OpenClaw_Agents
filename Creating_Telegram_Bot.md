@@ -51,9 +51,7 @@ This means OpenClaw is in allowlist/pairing mode.
 
 openclaw daemon restart
 
----
-
-## Security notes
+### Security notes
 
 * Do **not** share your bot token publicly.
 * If you accidentally expose it, rotate it immediately:

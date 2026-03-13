@@ -19,10 +19,6 @@ OpenClaw receives it and runs a safe, allowlisted command that:
   - Output filename
   - Changes summary (including slide or all-slides)
 
-Output filename
-
-Changes summary (including slide or all-slides)
-
 ## Architecture
 
 - Telegram Bot: chat interface

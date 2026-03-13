@@ -33,9 +33,9 @@ nano ~/tools/pptx_edit.py
 chmod +x ~/tools/pptx_edit.py  
 
 #### pptx_edit.py should:  
-#### accept --in, --outdir, --find, --replace, optional --slide  
-#### write *_edited_<timestamp>.pptx  
-#### print output path and changes=N  
+#### - accept --in, --outdir, --find, --replace, optional --slide  
+#### - write *_edited_<timestamp>.pptx  
+#### - print output path and changes=N  
 
 ### 4) Wrapper to enforces security boundary
 #### ~/tools/pptx_edit_safe.sh (recommended)

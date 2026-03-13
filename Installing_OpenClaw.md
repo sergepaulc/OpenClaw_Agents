@@ -4,7 +4,7 @@ curl -fsSL https://openclaw.ai/install.sh | bash
 exec $SHELL -l
 openclaw onboard
 
-### Start OpenClaw:
+### Start OpenClaw
 
 openclaw daemon start
 openclaw gateway status

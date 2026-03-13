@@ -2,11 +2,11 @@
 
 #### Create on Windows Desktop:
 
-C:\Users\<YOU>\Desktop\OpenClaw_PPT\
+- C:\Users\<YOU>\Desktop\OpenClaw_PPT\
 
 #### WSL path:
 
-/mnt/c/Users/<YOU>/Desktop/OpenClaw_PPT/
+- /mnt/c/Users/<YOU>/Desktop/OpenClaw_PPT/
 
 #### Put your input PPTX file in that folder
 

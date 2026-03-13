@@ -7,10 +7,10 @@ wsl --install -d Ubuntu-24.04
 #### Launch Ubuntu once to create a Linux username/password
 #### Enable systemd in WSL:
 
-sudo tee /etc/wsl.conf >/dev/null <<'EOF'
-[boot]
-systemd=true
-EOF
+sudo tee /etc/wsl.conf >/dev/null <<'EOF'  
+[boot]  
+systemd=true  
+EOF  
 
 #### Then in PowerShell:
 wsl --shutdown

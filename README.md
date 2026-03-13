@@ -12,10 +12,10 @@ You send a message to your Telegram bot like:
 pptx Art_Class.pptx | find=Class | replace=Course
 
 OpenClaw receives it and runs a safe, allowlisted command that:
-- only operates inside a single folder (`Desktop/OpenClaw_PPT`)
-- never overwrites the original file
-- writes a new file: `*_edited_<timestamp>.pptx`
-- reply in Telegram with:
+- Only operates inside a single folder (`Desktop/OpenClaw_PPT`)
+- Never overwrites the original file
+- Writes a new file: `*_edited_<timestamp>.pptx`
+- Reply in Telegram with:
   - Output filename
   - Changes summary (including slide or all-slides)
 

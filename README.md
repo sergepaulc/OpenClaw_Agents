@@ -4,7 +4,7 @@
 
 Edit `.pptx` files automatically from a Telegram bot using OpenClaw on an HP OmniBook Windows machine.
 
-No PowerPoint UI automation: you edit the PPTX file directly using `python-pptx`.
+The agent edit the PPTX file directly using `python-pptx`.
 
 ## How does it work?
 

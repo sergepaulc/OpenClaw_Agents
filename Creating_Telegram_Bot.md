@@ -9,7 +9,9 @@ Install Telegram on your phone and sign up with your phone number.
 1. Open Telegram and search: **@BotFather**  
 2. Start the chat and send:  
 
-
+```text
+/newbot
+```
 
 #### 3) When prompted, choose:
 

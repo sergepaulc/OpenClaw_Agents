@@ -65,7 +65,7 @@ Edit PPTX <file>.pptx: replace "<old>" with "<new>" on all slides
 
 #### Example:
 
-Edit PPTX Art_Class.pptx: replace "Class" with "Course" on all slides
+Edit PPTX Your_Presentation.pptx: replace "Word" with "New Word" on all slides
 
 #### OpenClaw replies with an output filename and a change summary
 

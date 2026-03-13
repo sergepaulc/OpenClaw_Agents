@@ -25,9 +25,7 @@ Install Telegram on your phone and sign up with your phone number.
 
 In WSL/Ubuntu run:
 
-```bash
 openclaw onboard
-```
 
 Then choose:
 
@@ -42,9 +40,7 @@ In Telegram:
 2. Open it and tap **Start**
 3. Send a message like:
 
-```text
 hello
-```
 
 #### 5) If OpenClaw says “access not configured”
 
@@ -53,9 +49,7 @@ This means OpenClaw is in allowlist/pairing mode.
 * Message **@userinfobot** to get your Telegram **numeric user ID**
 * Add that ID to OpenClaw’s Telegram allowlist (`allowFrom`) and restart OpenClaw:
 
-```bash
 openclaw daemon restart
-```
 
 ---
 

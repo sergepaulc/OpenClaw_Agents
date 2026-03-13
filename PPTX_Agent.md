@@ -14,23 +14,23 @@ C:\Users\<YOU>\Desktop\OpenClaw_PPT\
 
 #### Ubuntu 24.04 enforces PEP 668; use a venv:
 
-sudo apt update
-sudo apt install -y python3-venv
+sudo apt update  
+sudo apt install -y python3-venv  
 
 #### PPTX editor dependency (required) - This project uses the python-pptx library to edit .pptx files:
 
-python3 -m venv ~/.venvs/openclaw-ppt
-source ~/.venvs/openclaw-ppt/bin/activate
-pip install --upgrade pip
-pip install python-pptx
-python -c "import pptx; print('pptx ok')"
+python3 -m venv ~/.venvs/openclaw-ppt  
+source ~/.venvs/openclaw-ppt/bin/activate  
+pip install --upgrade pip  
+pip install python-pptx  
+python -c "import pptx; print('pptx ok')"  
 
 ### 3) Create the PPTX editor tool
 #### ~/tools/pptx_edit.py
 
-mkdir -p ~/tools
-nano ~/tools/pptx_edit.py
-chmod +x ~/tools/pptx_edit.py
+mkdir -p ~/tools  
+nano ~/tools/pptx_edit.py  
+chmod +x ~/tools/pptx_edit.py  
 
 #### pptx_edit.py should:
 #### accept --in, --outdir, --find, --replace, optional --slide
@@ -43,13 +43,13 @@ chmod +x ~/tools/pptx_edit.py
 #### accepts only a filename (no paths)
 #### requires .pptx
 
-nano ~/tools/pptx_edit_safe.sh
-chmod +x ~/tools/pptx_edit_safe.sh
+nano ~/tools/pptx_edit_safe.sh  
+chmod +x ~/tools/pptx_edit_safe.sh  
 
 #### In the wrapper, set:
-PPT_DIR="/mnt/c/Users/<YOU>/Desktop/OpenClaw_PPT"
-PY="/home/<LINUX_USER>/.venvs/openclaw-ppt/bin/python"
-SCRIPT="/home/<LINUX_USER>/tools/pptx_edit.py"
+PPT_DIR="/mnt/c/Users/<YOU>/Desktop/OpenClaw_PPT"  
+PY="/home/<LINUX_USER>/.venvs/openclaw-ppt/bin/python"  
+SCRIPT="/home/<LINUX_USER>/tools/pptx_edit.py"  
 
 ### 5) Manual test
 ~/tools/pptx_edit_safe.sh Art_Class.pptx Class Course
@@ -60,8 +60,8 @@ SCRIPT="/home/<LINUX_USER>/tools/pptx_edit.py"
 
 #### Supported command format (natural language)
 
-Edit PPTX <file>.pptx: replace "<old>" with "<new>" on slide <n>
-Edit PPTX <file>.pptx: replace "<old>" with "<new>" on all slides
+Edit PPTX <file>.pptx: replace "<old>" with "<new>" on slide <n>  
+Edit PPTX <file>.pptx: replace "<old>" with "<new>" on all slides  
 
 #### Example:
 

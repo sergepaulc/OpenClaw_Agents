@@ -32,7 +32,7 @@ Then choose:
 * **Channel** → Telegram (Bot API)
 * Paste your **bot token** when prompted
 
-#### 4) Start the bot chat
+#### 5) Start the bot chat
 
 In Telegram:
 
@@ -42,7 +42,7 @@ In Telegram:
 
 hello
 
-#### 5) If OpenClaw says “access not configured”
+#### 6) If OpenClaw says “access not configured”
 
 This means OpenClaw is in allowlist/pairing mode.
 

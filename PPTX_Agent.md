@@ -35,7 +35,7 @@ chmod +x ~/tools/pptx_edit.py
 #### write *_edited_<timestamp>.pptx
 #### print output path and changes=N
 
-### Wrapper to enforces security boundary:
+### 4) Wrapper to enforces security boundary
 #### ~/tools/pptx_edit_safe.sh (recommended)
 #### only works inside OpenClaw_PPT
 #### accepts only a filename (no paths)

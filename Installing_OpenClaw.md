@@ -1,6 +1,6 @@
 #### Installing OpenClaw for WSL/Ubuntu
 
-curl -fsSL https://openclaw.ai/install.sh | bash
+curl -fsSL https://openclaw.ai/install.sh | bash  
 
 exec $SHELL -l
 

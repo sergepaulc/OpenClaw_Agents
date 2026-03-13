@@ -16,8 +16,8 @@ OpenClaw receives it and runs a safe, allowlisted command that:
 - never overwrites the original file
 - writes a new file: `*_edited_<timestamp>.pptx`
 - reply in Telegram with:
-- Output filename
-- Changes summary (including slide or all-slides)
+  - Output filename
+  - Changes summary (including slide or all-slides)
 
 Output filename
 

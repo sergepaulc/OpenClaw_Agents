@@ -1,21 +1,21 @@
-# Installing WSL2 and Ubuntu 24.04 on Windows 11
+### Installing WSL2 and Ubuntu 24.04 on Windows 11
 
-# In PowerShell (Admin):
+#### In PowerShell (Admin):
 
 wsl --install -d Ubuntu-24.04
 
-# Launch Ubuntu once to create a Linux username/password
-# Enable systemd in WSL:
+#### Launch Ubuntu once to create a Linux username/password
+#### Enable systemd in WSL:
 
 sudo tee /etc/wsl.conf >/dev/null <<'EOF'
 [boot]
 systemd=true
 EOF
 
-# Then in PowerShell:
+#### Then in PowerShell:
 wsl --shutdown
 
-# Reopen Ubuntu and verify:
+#### Reopen Ubuntu and verify:
 ps -p 1 -o comm=
 
-# It should show systemd.
+#### It should show systemd.

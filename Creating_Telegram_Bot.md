@@ -53,8 +53,8 @@ openclaw daemon restart
 
 ### Security notes
 
-* Do **not** share your bot token publicly.
-* If you accidentally expose it, rotate it immediately:
+* Do **not** share your bot token publicly  
+* If you accidentally expose it, rotate it immediately:  
 
   * @BotFather → `/mybots` → select bot → **API Token** → **Revoke** / regenerate
   * Update the token in OpenClaw and restart

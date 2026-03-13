@@ -30,7 +30,7 @@ OpenClaw receives it and runs a safe, allowlisted command that:
 
 - Windows 10/11 with WSL
 - Ubuntu 24.04 (WSL)
-- OpenClaw installed and connected to Telegram + an LLM provider (Anthropic/OpenAI)
+- OpenClaw installed and connected to Telegram + an LLM provider (Anthropic/OpenAI API key)
 - Python 3 + `python-venv`
 
 ## Licensing

@@ -2,7 +2,7 @@
 
 ## OpenClaw PPTX Editor 
 
-Edit `.pptx` files automatically from Telegram bots using OpenClaw on Windows.  
+Edit `.pptx` files automatically from Telegram bots using OpenClaw on an HP OmniBook Windows machine.
 
 No PowerPoint UI automation: we edit the PPTX file directly using `python-pptx`.
 

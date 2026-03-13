@@ -49,12 +49,12 @@ PPT_DIR="/mnt/c/Users/<YOU>/Desktop/OpenClaw_PPT"
 PY="/home/<LINUX_USER>/.venvs/openclaw-ppt/bin/python"
 SCRIPT="/home/<LINUX_USER>/tools/pptx_edit.py"
 
-#### Manual test
+### 5) Manual test
 ~/tools/pptx_edit_safe.sh Art_Class.pptx Class Course
 
 #### This should create a new edited file in the same folder
 
-#### Telegram message
+### 6) Telegram message
 
 #### Supported command format (natural language)
 

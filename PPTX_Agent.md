@@ -17,6 +17,8 @@ C:\Users\<YOU>\Desktop\OpenClaw_PPT\
 sudo apt update
 sudo apt install -y python3-venv
 
+#### PPTX editor dependency (required) - This project uses the python-pptx library to edit .pptx files:
+
 python3 -m venv ~/.venvs/openclaw-ppt
 source ~/.venvs/openclaw-ppt/bin/activate
 pip install --upgrade pip

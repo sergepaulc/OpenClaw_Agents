@@ -67,7 +67,7 @@ Edit PPTX Art_Class.pptx: replace "Class" with "Course" on all slides
 
 #### OpenClaw replies with an output filename and a change summary
 
-### Security notes (important)
+### 7) Security notes (important)
 #### Keep the OpenClaw gateway bound to localhost (127.0.0.1) unless you really need remote access
 #### Restrict edits to a single dedicated folder (OpenClaw_PPT)
 #### Use a safe wrapper script to prevent path traversal and cross-folder access

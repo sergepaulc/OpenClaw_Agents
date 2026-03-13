@@ -9,7 +9,7 @@ The agent edit the PPTX file directly using `python-pptx`.
 ## How does it work?
 
 You send a message to your Telegram bot like:
-pptx YourPresentation.pptx | find=Word | replace=NewWord
+"YourPresentation.pptx | find=Word | replace=NewWord"
 
 OpenClaw receives it and runs a safe, allowlisted command that:
 - Only operates inside a single folder (`Desktop/OpenClaw_PPT`)
